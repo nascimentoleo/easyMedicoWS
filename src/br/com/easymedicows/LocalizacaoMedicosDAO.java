@@ -73,7 +73,7 @@ public class LocalizacaoMedicosDAO {
 	// Aqui irei retornar a lista de todos os médicos ativos e suas localizações
 	public LinkedList<Medico> getLocalizacoesPorMedicosAtivos() {
 		try {
-			String sql = "SELECT M.user, M.nome, M.especialidade, M.tipoAtendimento, M.qtdPacientesPorDia, M.qtdPacientesPorHora, LM.latitude, LM.longitute "
+			String sql = "SELECT M.user, M.nome, M.especialidade, M.tipoAtendimento, M.qtdPacientesPorDia, M.qtdPacientesPorHora, LM.latitude, LM.longitude "
 					+ "FROM medicos M, localizacao_medicos LM"
 					+ " WHERE LM.medicos_user = M.user AND LM.ativo = ? ";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
