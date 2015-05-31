@@ -52,7 +52,7 @@ public class LocalizacaoMedicosDAO {
 		}
 	}
 
-	public boolean excluirMedicoByUser(String user) {
+	public boolean excluirLocalizacaoByUser(String user) {
 		try {
 			String sql = "DELETE FROM localizacao_medicos WHERE medicos_user = ?";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
@@ -71,7 +71,7 @@ public class LocalizacaoMedicosDAO {
 	}
 
 	// Aqui irei retornar a lista de todos os médicos ativos e suas localizações
-	public LinkedList<Medico> getLocalizacoesPorMedicosAtivos() {
+	public LinkedList<Medico> getLocalizacaoByMedicos() {
 		try {
 			String sql = "SELECT M.user, M.nome, M.especialidade, M.tipoAtendimento, M.qtdPacientesPorDia, M.qtdPacientesPorHora, LM.latitude, LM.longitude "
 					+ "FROM medicos M, localizacao_medicos LM"
