@@ -33,7 +33,7 @@ public class LocalizacaoMedicosDAO {
 
 	public boolean alterarLocalizacao(LocalizacaoMedicos localizacao) {
 		try {
-			String sql = "ALTER TABLE localizacao_medicos SET latitude = ?, longitude = ?,"
+			String sql = "UPDATE localizacao_medicos SET latitude = ?, longitude = ?,"
 					+ " ativo = ? WHERE medicos_user = ?";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
 					sql);

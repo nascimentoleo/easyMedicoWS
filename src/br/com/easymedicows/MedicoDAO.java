@@ -39,7 +39,7 @@ public class MedicoDAO {
 	
 	public boolean alterarMedico(Medico medico) {
 		try {
-			String sql = "ALTER TABLE medicos SET nome = ?, especialidade = ?,"
+			String sql = "UPDATE medicos SET nome = ?, especialidade = ?,"
 					+ " tipoAtendimento = ?, qtdPacientePorDia = ?, qtdPacientePorHora = ? WHERE user = ?";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(sql);
 			stmt.setString(1, medico.getNome());

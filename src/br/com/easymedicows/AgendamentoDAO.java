@@ -35,7 +35,7 @@ public class AgendamentoDAO {
 
 	public boolean alterarAgendamento(Agendamento agendamento) {
 		try {
-			String sql = "ALTER TABLE agendamentos SET nomePaciente = ?, data = ?,"
+			String sql = "UPDATE agendamentos SET nomePaciente = ?, data = ?,"
 					+ " ordem = ?, hora = ?, medicos_user = ? WHERE idAgendamento = ?";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
 					sql);
