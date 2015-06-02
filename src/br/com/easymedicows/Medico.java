@@ -8,9 +8,10 @@ public class Medico {
 	private String password;
 	private String nome;
 	private String especialidade;
-	private String tipoAtendimento;
 	private int QtdPacientesPorDia;
 	private int QtdPacientesPorHora;
+	private String agendaManha;
+	private String agendaTarde;
 	private LocalizacaoMedicos localizacao;
 	private LinkedList<Agendamento> agendamentos;
 	
@@ -47,14 +48,6 @@ public class Medico {
 		this.especialidade = especialidade;
 	}
 
-	public String getTipoAtendimento() {
-		return tipoAtendimento;
-	}
-
-	public void setTipoAtendimento(String tipoAtendimento) {
-		this.tipoAtendimento = tipoAtendimento;
-	}
-
 	public int getQtdPacientesPorDia() {
 		return QtdPacientesPorDia;
 	}
@@ -85,7 +78,25 @@ public class Medico {
 
 	public void setAgendamentos(LinkedList<Agendamento> agendamentos) {
 		this.agendamentos = agendamentos;
+	}
+
+	public String getAgendaManha() {
+		return agendaManha;
+	}
+
+	public void setAgendaManha(String agendaManha) {
+		this.agendaManha = agendaManha;
+	}
+
+	public String getAgendaTarde() {
+		return agendaTarde;
+	}
+
+	public void setAgendaTarde(String agendaTarde) {
+		this.agendaTarde = agendaTarde;
 	} 
+	
+	
 	
 	
 	

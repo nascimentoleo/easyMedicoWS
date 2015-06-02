@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Mai 28, 2015 as 06:47 PM
+-- Tempo de Geração: Jun 02, 2015 as 07:06 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -31,17 +31,18 @@ CREATE TABLE IF NOT EXISTS `agendamentos` (
   `idagendamento` int(11) NOT NULL AUTO_INCREMENT,
   `nomePaciente` varchar(45) NOT NULL,
   `data` varchar(20) NOT NULL,
-  `ordem` int(11) DEFAULT NULL,
   `hora` varchar(20) DEFAULT NULL,
   `medicos_user` varchar(20) NOT NULL,
   PRIMARY KEY (`idagendamento`),
   KEY `fk_agendamentos_medicos_idx` (`medicos_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `agendamentos`
 --
 
+INSERT INTO `agendamentos` (`idagendamento`, `nomePaciente`, `data`, `hora`, `medicos_user`) VALUES
+(1, 'Fulano', '29/05/2015', '10:00', 'cubanas');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `localizacao_medicos` (
 --
 
 INSERT INTO `localizacao_medicos` (`medicos_user`, `latitude`, `longitude`, `ativo`) VALUES
-('cubanas', '-123123.12312', '-123123.31231', 'S');
+('cubanas', '-2.53531536', '-44.22709957', 'S'),
+('leo', '-2.531336', '-44.225360', 'S');
 
 -- --------------------------------------------------------
 
@@ -75,9 +77,10 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `password` varchar(60) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `especialidade` varchar(45) NOT NULL,
-  `tipoAtendimento` varchar(45) DEFAULT NULL,
   `qtdPacientesPorDia` int(11) DEFAULT NULL,
   `qtdPacientesPorHora` int(11) DEFAULT NULL,
+  `agendaManha` varchar(1) NOT NULL,
+  `agendaTarde` varchar(1) NOT NULL,
   PRIMARY KEY (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -85,8 +88,9 @@ CREATE TABLE IF NOT EXISTS `medicos` (
 -- Extraindo dados da tabela `medicos`
 --
 
-INSERT INTO `medicos` (`user`, `password`, `nome`, `especialidade`, `tipoAtendimento`, `qtdPacientesPorDia`, `qtdPacientesPorHora`) VALUES
-('cubanas', 'cubanas', 'Cubanas', 'Casca de Banana', 'ORDEM_CHEGADA', 10, 1);
+INSERT INTO `medicos` (`user`, `password`, `nome`, `especialidade`, `qtdPacientesPorDia`, `qtdPacientesPorHora`, `agendaManha`, `agendaTarde`) VALUES
+('cubanas', 'cubanas', 'Cubanas', 'Casca de Banana', 10, 1, 'S', 'N'),
+('leo', 'leo', 'Leonardo', 'Clínico Geral', 10, 1, 'S', 'S');
 
 --
 -- Restrições para as tabelas dumpadas

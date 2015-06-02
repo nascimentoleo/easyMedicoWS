@@ -8,7 +8,6 @@ public class Agendamento {
 	private int idAgendamento;
 	private String nomePaciente;
 	private String data;
-	private int ordem;
 	private String hora;
 	private String user;
 	
@@ -29,12 +28,6 @@ public class Agendamento {
 	}
 	public void setData(String data) {
 		this.data = data;
-	}
-	public int getOrdem() {
-		return ordem;
-	}
-	public void setOrdem(int ordem) {
-		this.ordem = ordem;
 	}
 	public String getHora() {
 		return hora;
