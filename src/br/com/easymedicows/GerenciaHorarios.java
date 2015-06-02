@@ -1,11 +1,12 @@
 package br.com.easymedicows;
 
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.Vector;
 
-public class Horarios {
+public class GerenciaHorarios {
 
-	public static Vector<String> calculaHorariosDisponiveisPorDia(
+	public static LinkedList<Horario> calculaHorariosDisponiveisPorDia(
 			Vector<String> agendamentos, Medico medico) {
 		String horarios;
 		if (medico.getAgendaManha().equals("S")
@@ -19,7 +20,7 @@ public class Horarios {
 			return null;
 		// Transformo em um vetor
 		String[] vetHorarios = horarios.split(",");
-		Vector<String> horariosDisponiveis = new Vector<String>();
+		LinkedList<Horario> horariosDisponiveis = new LinkedList<Horario>();
 		// Percorro os horários pré-definidos
 		System.out.println(vetHorarios[4]);
 		for (int i = 0; i < vetHorarios.length; i++) {
@@ -40,7 +41,7 @@ public class Horarios {
 			}
 			// Se for menor, adiciono o horário na lista de disponíveis
 			if (count < medico.getQtdPacientesPorHora()) {
-				horariosDisponiveis.add(vetHorarios[i]);
+				horariosDisponiveis.add(new Horario(vetHorarios[i]));
 			}
 
 		}

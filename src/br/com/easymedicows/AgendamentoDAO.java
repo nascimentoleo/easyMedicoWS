@@ -104,7 +104,7 @@ public class AgendamentoDAO {
 
 	}
 
-	public Vector<String> getHorariosDisponiveisPorMedicoData(String user,
+	public LinkedList<Horario> getHorariosDisponiveisPorMedicoData(String user,
 			String data) {
 		// Primeiro pego os agendamentos para aquele médico
 		String sql = "SELECT hora from agendamentos WHERE medicos_user = ? and data = ?";
@@ -134,7 +134,7 @@ public class AgendamentoDAO {
 			while (rsAgendamentos.next())
 				horariosAgendados.add(rsAgendamentos.getString(1));
 			
-			return  Horarios.calculaHorariosDisponiveisPorDia(horariosAgendados,medico);
+			return  GerenciaHorarios.calculaHorariosDisponiveisPorDia(horariosAgendados,medico);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
