@@ -10,6 +10,7 @@ public class Agendamento {
 	private String data;
 	private String hora;
 	private String user;
+	private String imei;
 	
 	public int getIdAgendamento() {
 		return idAgendamento;
@@ -41,6 +42,13 @@ public class Agendamento {
 	public void setUser(String user) {
 		this.user = user;
 	}
+	public String getImei() {
+		return imei;
+	}
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+	
 	
 
 }

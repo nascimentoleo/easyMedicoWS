@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jun 02, 2015 as 07:06 PM
+-- Tempo de Geração: Jun 03, 2015 as 07:17 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -33,16 +33,17 @@ CREATE TABLE IF NOT EXISTS `agendamentos` (
   `data` varchar(20) NOT NULL,
   `hora` varchar(20) DEFAULT NULL,
   `medicos_user` varchar(20) NOT NULL,
+  `IMEI` varchar(200) NOT NULL,
   PRIMARY KEY (`idagendamento`),
   KEY `fk_agendamentos_medicos_idx` (`medicos_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `agendamentos`
 --
 
-INSERT INTO `agendamentos` (`idagendamento`, `nomePaciente`, `data`, `hora`, `medicos_user`) VALUES
-(1, 'Fulano', '29/05/2015', '10:00', 'cubanas');
+INSERT INTO `agendamentos` (`idagendamento`, `nomePaciente`, `data`, `hora`, `medicos_user`, `IMEI`) VALUES
+(6, 'Leo', '03/06/2015', '08:00', 'cubanas', '355480065226206');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,6 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `password` varchar(60) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `especialidade` varchar(45) NOT NULL,
-  `qtdPacientesPorDia` int(11) DEFAULT NULL,
   `qtdPacientesPorHora` int(11) DEFAULT NULL,
   `agendaManha` varchar(1) NOT NULL,
   `agendaTarde` varchar(1) NOT NULL,
@@ -88,9 +88,10 @@ CREATE TABLE IF NOT EXISTS `medicos` (
 -- Extraindo dados da tabela `medicos`
 --
 
-INSERT INTO `medicos` (`user`, `password`, `nome`, `especialidade`, `qtdPacientesPorDia`, `qtdPacientesPorHora`, `agendaManha`, `agendaTarde`) VALUES
-('cubanas', 'cubanas', 'Cubanas', 'Casca de Banana', 10, 1, 'S', 'N'),
-('leo', 'leo', 'Leonardo', 'Clínico Geral', 10, 1, 'S', 'S');
+INSERT INTO `medicos` (`user`, `password`, `nome`, `especialidade`, `qtdPacientesPorHora`, `agendaManha`, `agendaTarde`) VALUES
+('cubanas', 'cubanas', 'Cubanas', 'Casca de Banana', 1, 'S', 'N'),
+('leo', 'leo', 'Leonardo', 'Clínico Geral', 1, 'S', 'S'),
+('xurupita', 'xurupita', 'Xurupita', 'Fisioterapia', 2, 'N', 'S');
 
 --
 -- Restrições para as tabelas dumpadas

@@ -8,7 +8,6 @@ public class Medico {
 	private String password;
 	private String nome;
 	private String especialidade;
-	private int QtdPacientesPorDia;
 	private int QtdPacientesPorHora;
 	private String agendaManha;
 	private String agendaTarde;
@@ -46,14 +45,6 @@ public class Medico {
 
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
-	}
-
-	public int getQtdPacientesPorDia() {
-		return QtdPacientesPorDia;
-	}
-
-	public void setQtdPacientesPorDia(int qtdPacientesPorDia) {
-		QtdPacientesPorDia = qtdPacientesPorDia;
 	}
 
 	public int getQtdPacientesPorHora() {

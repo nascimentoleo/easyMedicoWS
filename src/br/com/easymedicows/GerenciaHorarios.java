@@ -22,7 +22,6 @@ public class GerenciaHorarios {
 		String[] vetHorarios = horarios.split(",");
 		LinkedList<Horario> horariosDisponiveis = new LinkedList<Horario>();
 		// Percorro os horários pré-definidos
-		System.out.println(vetHorarios[4]);
 		for (int i = 0; i < vetHorarios.length; i++) {
 			int count = 0;
 			

@@ -7,8 +7,6 @@ import java.util.LinkedList;
 
 public class LocalizacaoMedicosDAO {
 
-	private Conexao conexao = new Conexao();
-
 	public boolean inserirLocalizacao(LocalizacaoMedicos localizacao) {
 
 		try {
@@ -73,7 +71,7 @@ public class LocalizacaoMedicosDAO {
 	// Aqui irei retornar a lista de todos os médicos ativos e suas localizações
 	public LinkedList<Medico> getLocalizacaoByMedicos() {
 		try {
-			String sql = "SELECT M.user, M.nome, M.especialidade, M.qtdPacientesPorDia, M.qtdPacientesPorHora, M.agendaManha, M.agendaTarde, LM.latitude, LM.longitude "
+			String sql = "SELECT M.user, M.nome, M.especialidade,  M.qtdPacientesPorHora, M.agendaManha, M.agendaTarde, LM.latitude, LM.longitude "
 					+ "FROM medicos M, localizacao_medicos LM"
 					+ " WHERE LM.medicos_user = M.user AND LM.ativo = ? ";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
@@ -86,14 +84,13 @@ public class LocalizacaoMedicosDAO {
 				medico.setUser(rs.getString(1));
 				medico.setNome(rs.getString(2));
 				medico.setEspecialidade(rs.getString(3));
-				medico.setQtdPacientesPorDia(rs.getInt(4));
-				medico.setQtdPacientesPorHora(rs.getInt(5));
-				medico.setAgendaManha(rs.getString(6));
-				medico.setAgendaTarde(rs.getString(7));
+				medico.setQtdPacientesPorHora(rs.getInt(4));
+				medico.setAgendaManha(rs.getString(5));
+				medico.setAgendaTarde(rs.getString(6));
 				medico.setLocalizacao(new LocalizacaoMedicos());
 				medico.getLocalizacao().setUser(medico.getUser());
-				medico.getLocalizacao().setLatitude(rs.getString(8));
-				medico.getLocalizacao().setLongitude(rs.getString(9));
+				medico.getLocalizacao().setLatitude(rs.getString(7));
+				medico.getLocalizacao().setLongitude(rs.getString(8));
 
 				listaMedicos.add(medico);
 			}
@@ -130,6 +127,6 @@ public class LocalizacaoMedicosDAO {
 			return null;
 		}
 
-	} 
+	}
 
 }
