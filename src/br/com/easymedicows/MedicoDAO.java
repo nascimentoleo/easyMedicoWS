@@ -10,7 +10,7 @@ public class MedicoDAO {
 	public boolean inserirMedico(Medico medico) {
 		
 		try {
-			String sql = "INSERT INTO medicos VALUES(?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO medicos VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(sql);
 			
 			stmt.setString(1, medico.getUser());
@@ -20,6 +20,7 @@ public class MedicoDAO {
 			stmt.setInt(5, medico.getQtdPacientesPorHora());
 			stmt.setString(6, medico.getAgendaManha());
 			stmt.setString(7, medico.getAgendaTarde());
+			stmt.setString(8, medico.getCrm());
 			
 			stmt.executeUpdate();
 			return true;
@@ -37,14 +38,15 @@ public class MedicoDAO {
 	public boolean alterarMedico(Medico medico) {
 		try {
 			String sql = "UPDATE medicos SET nome = ?, especialidade = ?,"
-					+ " qtdPacientePorHora = ?, agendaManha = ?, agendaTarde = ? WHERE user = ?";
+					+ " qtdPacientePorHora = ?, agendaManha = ?, agendaTarde = ?, crm = ? WHERE user = ?";
 			PreparedStatement stmt = Conexao.getConnection().prepareStatement(sql);
 			stmt.setString(1, medico.getNome());
 			stmt.setString(2, medico.getEspecialidade());
 			stmt.setInt(3, medico.getQtdPacientesPorHora());
 			stmt.setString(4, medico.getAgendaManha());
 			stmt.setString(5, medico.getAgendaTarde());
-			stmt.setString(6, medico.getUser());
+			stmt.setString(6, medico.getCrm());
+			stmt.setString(7, medico.getUser());
 
 			stmt.executeUpdate();
 			return true;
@@ -89,6 +91,7 @@ public class MedicoDAO {
 				medico.setQtdPacientesPorHora(rs.getInt(5));
 				medico.setAgendaManha(rs.getString(6));
 				medico.setAgendaTarde(rs.getString(7));
+				medico.setCrm(rs.getString(8));
 				listaMedicos.add(medico);
 			}
 			return listaMedicos;
@@ -116,6 +119,7 @@ public class MedicoDAO {
 				medico.setQtdPacientesPorHora(rs.getInt(5));
 				medico.setAgendaManha(rs.getString(6));
 				medico.setAgendaTarde(rs.getString(7));
+				medico.setCrm(rs.getString(8));
 				
 				return medico;
 			} else

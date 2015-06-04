@@ -13,6 +13,7 @@ public class Medico {
 	private String agendaTarde;
 	private LocalizacaoMedicos localizacao;
 	private LinkedList<Agendamento> agendamentos;
+	private String crm;
 	
 
 	public String getUser() {
@@ -85,6 +86,14 @@ public class Medico {
 
 	public void setAgendaTarde(String agendaTarde) {
 		this.agendaTarde = agendaTarde;
+	}
+
+	public String getCrm() {
+		return crm;
+	}
+
+	public void setCrm(String crm) {
+		this.crm = crm;
 	} 
 	
 	
