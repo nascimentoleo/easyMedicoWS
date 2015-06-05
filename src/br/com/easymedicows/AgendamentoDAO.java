@@ -10,50 +10,57 @@ public class AgendamentoDAO {
 
 	public boolean inserirAgendamento(Agendamento agendamento) {
 
-		try {
-			String sql = "INSERT INTO agendamentos VALUES(null,?,?,?,?,?)";
-			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
-					sql);
-			stmt.setString(1, agendamento.getNomePaciente());
-			stmt.setString(2, agendamento.getData());
-			stmt.setString(3, agendamento.getHora());
-			stmt.setString(4, agendamento.getUser());
-			stmt.setString(5, agendamento.getImei());
-			stmt.executeUpdate();
-			
-			stmt.close();
-			return true;
+		if(Data.dataValida(agendamento.getData())){
+			try {
+				String sql = "INSERT INTO agendamentos VALUES(null,?,?,?,?,?)";
+				PreparedStatement stmt = Conexao.getConnection().prepareStatement(
+						sql);
+				stmt.setString(1, agendamento.getNomePaciente());
+				stmt.setString(2, agendamento.getData());
+				stmt.setString(3, agendamento.getHora());
+				stmt.setString(4, agendamento.getUser());
+				stmt.setString(5, agendamento.getImei());
+				stmt.executeUpdate();
+				
+				stmt.close();
+				return true;
 
-		} catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+			} catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return false;
+		
 
 	}
 
 	public boolean alterarAgendamento(Agendamento agendamento) {
-		try {
-			String sql = "UPDATE agendamentos SET nomePaciente = ?, data = ?,"
-					+ " hora = ?, medicos_user = ? , IMEI = ? WHERE idAgendamento = ?";
-			PreparedStatement stmt = Conexao.getConnection().prepareStatement(
-					sql);
-			stmt.setString(1, agendamento.getNomePaciente());
-			stmt.setString(2, agendamento.getData());
-			stmt.setString(3, agendamento.getHora());
-			stmt.setString(4, agendamento.getUser());
-			stmt.setString(5, agendamento.getImei());
-			stmt.setInt(6, agendamento.getIdAgendamento());
+		if(Data.dataValida(agendamento.getData())){
+			try {
+				String sql = "UPDATE agendamentos SET nomePaciente = ?, data = ?,"
+						+ " hora = ?, medicos_user = ? , IMEI = ? WHERE idAgendamento = ?";
+				PreparedStatement stmt = Conexao.getConnection().prepareStatement(
+						sql);
+				stmt.setString(1, agendamento.getNomePaciente());
+				stmt.setString(2, agendamento.getData());
+				stmt.setString(3, agendamento.getHora());
+				stmt.setString(4, agendamento.getUser());
+				stmt.setString(5, agendamento.getImei());
+				stmt.setInt(6, agendamento.getIdAgendamento());
 
-			stmt.executeUpdate();
-			stmt.close();
-			return true;
+				stmt.executeUpdate();
+				stmt.close();
+				return true;
 
-		} catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+			} catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
+		return false;
+		
 	}
 
 	public boolean excluirAgendamentoById(int id) {
