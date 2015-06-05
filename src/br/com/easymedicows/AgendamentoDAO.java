@@ -20,7 +20,8 @@ public class AgendamentoDAO {
 			stmt.setString(4, agendamento.getUser());
 			stmt.setString(5, agendamento.getImei());
 			stmt.executeUpdate();
-
+			
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -45,6 +46,7 @@ public class AgendamentoDAO {
 			stmt.setInt(6, agendamento.getIdAgendamento());
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -61,6 +63,7 @@ public class AgendamentoDAO {
 					sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -93,6 +96,8 @@ public class AgendamentoDAO {
 				listaAgendas.add(agendamento);
 
 			}
+			rs.close();
+			stmt.close();
 			return listaAgendas;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -122,6 +127,9 @@ public class AgendamentoDAO {
 				listaAgendas.add(agendamento);
 
 			}
+			rs.close();
+			stmt.close();
+			
 			return listaAgendas;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -160,7 +168,10 @@ public class AgendamentoDAO {
 			// estão agendados pela manhã e quantos pela tarde
 			while (rsAgendamentos.next())
 				horariosAgendados.add(rsAgendamentos.getString(1));
-
+			rsMedicos.close();
+			rsAgendamentos.close();
+			stmt.close();
+			
 			return GerenciaHorarios.calculaHorariosDisponiveisPorDia(
 					horariosAgendados, medico);
 		} catch (ClassNotFoundException | SQLException e) {

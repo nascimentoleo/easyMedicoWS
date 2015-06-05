@@ -19,6 +19,7 @@ public class LocalizacaoMedicosDAO {
 			stmt.setString(4, localizacao.getAtivo());
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -41,6 +42,7 @@ public class LocalizacaoMedicosDAO {
 			stmt.setString(4, localizacao.getUser());
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -58,6 +60,7 @@ public class LocalizacaoMedicosDAO {
 			stmt.setString(1, user);
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -95,6 +98,8 @@ public class LocalizacaoMedicosDAO {
 
 				listaMedicos.add(medico);
 			}
+			rs.close();
+			stmt.close();
 			return listaMedicos;
 
 		} catch (SQLException | ClassNotFoundException e) {
@@ -118,15 +123,16 @@ public class LocalizacaoMedicosDAO {
 				localizacao.setLatitude(rs.getString(2));
 				localizacao.setLongitude(rs.getString(3));
 				localizacao.setAtivo(rs.getString(4));
+				rs.close();
+				stmt.close();
 				return localizacao;
-			} else
-				return null;
-
+			}
+			
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
 		}
+		return null;
 
 	}
 

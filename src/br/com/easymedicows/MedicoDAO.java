@@ -23,13 +23,15 @@ public class MedicoDAO {
 			stmt.setString(8, medico.getCrm());
 			
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			
 		}
+		return false;
 		
 
 	}
@@ -49,13 +51,15 @@ public class MedicoDAO {
 			stmt.setString(7, medico.getUser());
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			
 		}
+		return false;
 	}
 
 	public boolean excluirMedicoByUser(String user) {
@@ -65,13 +69,15 @@ public class MedicoDAO {
 			stmt.setString(1, user);
 
 			stmt.executeUpdate();
+			stmt.close();
 			return true;
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			
 		}
+		return false;
 
 	}
 
@@ -94,13 +100,16 @@ public class MedicoDAO {
 				medico.setCrm(rs.getString(8));
 				listaMedicos.add(medico);
 			}
+			rs.close();
+			stmt.close();
 			return listaMedicos;
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			
 		}
+		return null;
 
 	}
 
@@ -120,16 +129,19 @@ public class MedicoDAO {
 				medico.setAgendaManha(rs.getString(6));
 				medico.setAgendaTarde(rs.getString(7));
 				medico.setCrm(rs.getString(8));
-				
+				rs.close();
+				stmt.close();
 				return medico;
-			} else
-				return null;
+			} 
+				
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+		}finally{
+			
 		}
+		return null;
 
 	} 
 	
