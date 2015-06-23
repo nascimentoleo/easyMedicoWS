@@ -12,7 +12,7 @@ public class AgendamentoDAO {
 
 		if(Data.dataValida(agendamento.getData())){
 			try {
-				String sql = "INSERT INTO agendamentos VALUES(null,?,?,?,?,?)";
+				String sql = "INSERT INTO agendamentos VALUES(null,?,?,?,?,?,?)";
 				PreparedStatement stmt = Conexao.getConnection().prepareStatement(
 						sql);
 				stmt.setString(1, agendamento.getNomePaciente());
@@ -20,6 +20,7 @@ public class AgendamentoDAO {
 				stmt.setString(3, agendamento.getHora());
 				stmt.setString(4, agendamento.getUser());
 				stmt.setString(5, agendamento.getImei());
+				stmt.setString(6, agendamento.getTelefone());
 				stmt.executeUpdate();
 				
 				stmt.close();
@@ -39,7 +40,7 @@ public class AgendamentoDAO {
 		if(Data.dataValida(agendamento.getData())){
 			try {
 				String sql = "UPDATE agendamentos SET nomePaciente = ?, data = ?,"
-						+ " hora = ?, medicos_user = ? , IMEI = ? WHERE idAgendamento = ?";
+						+ " hora = ?, medicos_user = ? , IMEI = ?, telefone = ? WHERE idAgendamento = ?";
 				PreparedStatement stmt = Conexao.getConnection().prepareStatement(
 						sql);
 				stmt.setString(1, agendamento.getNomePaciente());
@@ -47,7 +48,8 @@ public class AgendamentoDAO {
 				stmt.setString(3, agendamento.getHora());
 				stmt.setString(4, agendamento.getUser());
 				stmt.setString(5, agendamento.getImei());
-				stmt.setInt(6, agendamento.getIdAgendamento());
+				stmt.setString(6, agendamento.getTelefone());
+				stmt.setInt(7, agendamento.getIdAgendamento());
 
 				stmt.executeUpdate();
 				stmt.close();
@@ -99,7 +101,7 @@ public class AgendamentoDAO {
 				agendamento.setHora(rs.getString(4));
 				agendamento.setUser(rs.getString(5));
 				agendamento.setImei(rs.getString(6));
-
+				agendamento.setTelefone(rs.getString(7));
 				listaAgendas.add(agendamento);
 
 			}
@@ -130,6 +132,7 @@ public class AgendamentoDAO {
 				agendamento.setHora(rs.getString(4));
 				agendamento.setUser(rs.getString(5));
 				agendamento.setImei(rs.getString(6));
+				agendamento.setTelefone(rs.getString(7));
 
 				listaAgendas.add(agendamento);
 

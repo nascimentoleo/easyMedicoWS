@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jun 04, 2015 as 12:11 AM
+-- Tempo de Geração: Jun 23, 2015 as 02:44 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -34,14 +34,19 @@ CREATE TABLE IF NOT EXISTS `agendamentos` (
   `hora` varchar(20) DEFAULT NULL,
   `medicos_user` varchar(20) NOT NULL,
   `IMEI` varchar(200) NOT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`idagendamento`),
   KEY `fk_agendamentos_medicos_idx` (`medicos_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Extraindo dados da tabela `agendamentos`
 --
 
+INSERT INTO `agendamentos` (`idagendamento`, `nomePaciente`, `data`, `hora`, `medicos_user`, `IMEI`, `telefone`) VALUES
+(1, 'Édipo', '05/06/2015', '07:00', 'freud', '355480065226206', '32164235'),
+(15, 'Seu Madruga', '05/06/2015', '15:00', 'leo', '355480065226206', 'SEM TELEFONE'),
+(16, 'Seu Zé', '01/07/2015', '10:00', 'freud', '355480065226206', '998653215');
 
 -- --------------------------------------------------------
 
@@ -61,6 +66,10 @@ CREATE TABLE IF NOT EXISTS `localizacao_medicos` (
 -- Extraindo dados da tabela `localizacao_medicos`
 --
 
+INSERT INTO `localizacao_medicos` (`medicos_user`, `latitude`, `longitude`, `ativo`) VALUES
+('freud', '-2.533495', '-44.225381', 'S'),
+('hans', '-2.521442', '-44.255676', 'S'),
+('leo', '-2.543200', '-44.204553', 'S');
 
 -- --------------------------------------------------------
 
@@ -84,6 +93,10 @@ CREATE TABLE IF NOT EXISTS `medicos` (
 -- Extraindo dados da tabela `medicos`
 --
 
+INSERT INTO `medicos` (`user`, `password`, `nome`, `especialidade`, `qtdPacientesPorHora`, `agendaManha`, `agendaTarde`, `crm`) VALUES
+('freud', 'freud', 'Freu', 'Psicologo', 2, 'S', 'N', '7654'),
+('hans', 'hans', 'Hans Chucrute', 'Dermatologista', 3, 'S', 'S', '9864'),
+('leo', 'leo', 'Leonardo', 'Clínico Geral', 2, 'S', 'S', '1234');
 
 --
 -- Restrições para as tabelas dumpadas

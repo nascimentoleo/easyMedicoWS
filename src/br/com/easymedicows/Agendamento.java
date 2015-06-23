@@ -11,6 +11,7 @@ public class Agendamento {
 	private String hora;
 	private String user;
 	private String imei;
+	private String telefone;
 	
 	public int getIdAgendamento() {
 		return idAgendamento;
@@ -47,6 +48,12 @@ public class Agendamento {
 	}
 	public void setImei(String imei) {
 		this.imei = imei;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	
