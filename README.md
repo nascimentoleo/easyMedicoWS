@@ -3,6 +3,7 @@ Web Service - Easy Médico
 
 Tecnologias utilizadas
 - Banco Mysql
+- Eclipse
 - Apache Tomcat 7
 - Framework Axis2
 
