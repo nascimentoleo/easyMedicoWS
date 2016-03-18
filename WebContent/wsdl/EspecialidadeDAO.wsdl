@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://easymedicows.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://easymedicows.com.br" xmlns:intf="http://easymedicows.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://easymedicows.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getEspecialidades">
+    <complexType/>
+   </element>
+   <element name="getEspecialidadesResponse">
+    <complexType>
+     <sequence>
+      <element name="getEspecialidadesReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getEspecialidadesRequest">
+
+      <wsdl:part element="impl:getEspecialidades" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEspecialidadesResponse">
+
+      <wsdl:part element="impl:getEspecialidadesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EspecialidadeDAO">
+
+      <wsdl:operation name="getEspecialidades">
+
+         <wsdl:input message="impl:getEspecialidadesRequest" name="getEspecialidadesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getEspecialidadesResponse" name="getEspecialidadesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EspecialidadeDAOSoapBinding" type="impl:EspecialidadeDAO">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getEspecialidades">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEspecialidadesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEspecialidadesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EspecialidadeDAOService">
+
+      <wsdl:port binding="impl:EspecialidadeDAOSoapBinding" name="EspecialidadeDAO">
+
+         <wsdlsoap:address location="http://localhost:8080/easyMedicoWS/services/EspecialidadeDAO"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

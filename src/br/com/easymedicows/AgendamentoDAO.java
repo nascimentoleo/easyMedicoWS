@@ -152,7 +152,7 @@ public class AgendamentoDAO {
 
 	public LinkedList<Horario> getHorariosDisponiveisPorMedicoData(String user,
 			String data) {
-		// Primeiro pego os agendamentos para aquele médico
+		// Primeiro pego os agendamentos para aquele mï¿½dico
 		String sql = "SELECT hora from agendamentos WHERE medicos_user = ? and data = ?";
 		PreparedStatement stmt;
 		try {
@@ -160,7 +160,7 @@ public class AgendamentoDAO {
 			stmt.setString(1, user);
 			stmt.setString(2, data);
 			ResultSet rsAgendamentos = stmt.executeQuery();
-			// Agora pego os limites de agendamentos para aquele médico
+			// Agora pego os limites de agendamentos para aquele mï¿½dico
 			sql = "SELECT qtdPacientesPorHora, agendaManha, agendaTarde FROM medicos WHERE user = ?";
 			stmt = Conexao.getConnection().prepareStatement(sql);
 			stmt.setString(1, user);
@@ -175,7 +175,7 @@ public class AgendamentoDAO {
 			// Pego a quantidade agendada
 			int qtdAgendados = rsAgendamentos.getFetchSize();
 			// Aqui irei percorrer o array de agendamentos, para saber quantos
-			// estão agendados pela manhã e quantos pela tarde
+			// estao agendados pela manha e quantos pela tarde
 			while (rsAgendamentos.next())
 				horariosAgendados.add(rsAgendamentos.getString(1));
 			rsMedicos.close();

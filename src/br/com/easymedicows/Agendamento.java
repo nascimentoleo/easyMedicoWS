@@ -1,9 +1,5 @@
 package br.com.easymedicows;
 
-import java.sql.Date;
-import java.sql.Time;
-
-
 public class Agendamento {
 	private int idAgendamento;
 	private String nomePaciente;
