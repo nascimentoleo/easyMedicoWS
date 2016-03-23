@@ -117,4 +117,4 @@
 /build/
 /build/
 /build/
-/.settings/
+.settings/**/*
